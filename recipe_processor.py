@@ -82,7 +82,10 @@ def process_llm_block(name: str, block: dict):
             intents_ = []      
             for intent in intents:
                 if intent.get("SelectedText") != "":
-                    intents_.append(intent)
+                    intents_.append({
+                        "SelectedText": intent.get("SelectedText", ""),
+                        "Name": intent.get("Name", ""),
+                    })
             tmp['intents'] = intents_
 
             prompts_.append(tmp)

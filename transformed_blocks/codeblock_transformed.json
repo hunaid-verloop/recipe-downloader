@@ -1,1 +1,14 @@
-{"Type": "CodeBlock", "Name": "Code 1", "Code": "console.log(variables.abc)\nif (variables.abc === \"Happy\"){\n    variables.abc = \"Not Happy\"\n}else if(variables.abc === \"Not Happy\"){\n    variables.abc = \"Angry\"\n}else{\n    variables.abc = \"Happy\"\n}\nconsole.log(variables.abc)", "plugins": [{"id": "", "Type": "SYSTEM_PLUGIN"}], "variables": ["abc Type: TEXT Scope: ROOM kind: RECIPEVARIABLE"]}
+{
+  "Type": "CodeBlock",
+  "Name": "Code 1",
+  "Code": "console.log(variables.abc)\nif (variables.abc === \"Happy\"){\n    variables.abc = \"Not Happy\"\n}else if(variables.abc === \"Not Happy\"){\n    variables.abc = \"Angry\"\n}else{\n    variables.abc = \"Happy\"\n}\nconsole.log(variables.abc)",
+  "plugins": [
+    {
+      "id": "",
+      "Type": "SYSTEM_PLUGIN"
+    }
+  ],
+  "variables": [
+    "abc Type: TEXT Scope: ROOM kind: RECIPEVARIABLE"
+  ]
+}

@@ -1,1 +1,46 @@
-{"Type": "ConditionBlock", "Name": "Condition 1", "Conditions": [{"NextBlock": "d01aec6a-06af-4b8d-abf2-eb6bc15eb66e", "Condition": "intentdetected EQUALS BalanceEnquiry OR intentdetected EQUALS Recent_Transactions OR intentdetected EQUALS User_Interested_In_Account_Statement"}, {"NextBlock": "21145a34-6a83-4eba-8bdb-9333e47e3562", "Condition": "intentdetected EQUALS Fixed_Deposit_Balance_MaturityDate_InterestRate"}, {"NextBlock": "3e4babe5-442b-4987-8e68-0595354eb8de", "Condition": "intentdetected EQUALS User_Enquiring_About_Existing_Loan_Account"}, {"NextBlock": "2c773aa0-d1f3-4e0d-9710-82cb499bb3fb", "Condition": "intentdetected EQUALS Debit_Card_Enable_Disable_Transactions"}, {"NextBlock": "f0a0953e-0392-44f3-a504-e668355fab4a", "Condition": "intentdetected EQUALS User_Asked_For_Cheque_Status_Stop_Cheque"}, {"NextBlock": "8eb1d1fc-f8b8-4a92-814f-34f9db70dbd2", "Condition": "intentdetected EQUALS CloseConversation"}, {"NextBlock": "f0a0953e-0392-44f3-a504-e668355fab4a", "Condition": "intentdetected EQUALS User_Wants_To_Place_An_Order_For_Cheque_Book_Request"}, {"NextBlock": "71dc0289-cc99-47e5-bc9b-8f5ad26842ff", "Condition": "intentdetected EQUALS Fraud_Or_Block_UPI OR intentdetected EQUALS Fraud_Or_Block_MobileBanking OR intentdetected EQUALS Fraud_Or_Block_InternetBanking OR intentdetected EQUALS Fraud_Or_Block_DebitCard OR intentdetected EQUALS Fraud_Or_Unauthorised_Usage_General"}, {"NextBlock": "d01aec6a-06af-4b8d-abf2-eb6bc15eb66e", "Condition": "intentdetected EQUALS AccountStatus"}, {"NextBlock": "7b41b2d4-d8b8-4a6a-9d7a-c7e1d27f8d1c", "Condition": "intentdetected EQUALS Unblock_Debit_Card"}]}
+{
+  "Type": "ConditionBlock",
+  "Name": "Condition 1",
+  "Conditions": [
+    {
+      "NextBlock": "d01aec6a-06af-4b8d-abf2-eb6bc15eb66e",
+      "Condition": "intentdetected EQUALS BalanceEnquiry OR intentdetected EQUALS Recent_Transactions OR intentdetected EQUALS User_Interested_In_Account_Statement"
+    },
+    {
+      "NextBlock": "21145a34-6a83-4eba-8bdb-9333e47e3562",
+      "Condition": "intentdetected EQUALS Fixed_Deposit_Balance_MaturityDate_InterestRate"
+    },
+    {
+      "NextBlock": "3e4babe5-442b-4987-8e68-0595354eb8de",
+      "Condition": "intentdetected EQUALS User_Enquiring_About_Existing_Loan_Account"
+    },
+    {
+      "NextBlock": "2c773aa0-d1f3-4e0d-9710-82cb499bb3fb",
+      "Condition": "intentdetected EQUALS Debit_Card_Enable_Disable_Transactions"
+    },
+    {
+      "NextBlock": "f0a0953e-0392-44f3-a504-e668355fab4a",
+      "Condition": "intentdetected EQUALS User_Asked_For_Cheque_Status_Stop_Cheque"
+    },
+    {
+      "NextBlock": "8eb1d1fc-f8b8-4a92-814f-34f9db70dbd2",
+      "Condition": "intentdetected EQUALS CloseConversation"
+    },
+    {
+      "NextBlock": "f0a0953e-0392-44f3-a504-e668355fab4a",
+      "Condition": "intentdetected EQUALS User_Wants_To_Place_An_Order_For_Cheque_Book_Request"
+    },
+    {
+      "NextBlock": "71dc0289-cc99-47e5-bc9b-8f5ad26842ff",
+      "Condition": "intentdetected EQUALS Fraud_Or_Block_UPI OR intentdetected EQUALS Fraud_Or_Block_MobileBanking OR intentdetected EQUALS Fraud_Or_Block_InternetBanking OR intentdetected EQUALS Fraud_Or_Block_DebitCard OR intentdetected EQUALS Fraud_Or_Unauthorised_Usage_General"
+    },
+    {
+      "NextBlock": "d01aec6a-06af-4b8d-abf2-eb6bc15eb66e",
+      "Condition": "intentdetected EQUALS AccountStatus"
+    },
+    {
+      "NextBlock": "7b41b2d4-d8b8-4a6a-9d7a-c7e1d27f8d1c",
+      "Condition": "intentdetected EQUALS Unblock_Debit_Card"
+    }
+  ]
+}
