@@ -1,9 +1,13 @@
+import json
+
+
+from recipes_downloader import getRecipe
+
 def process_recipe(recipe: dict)-> dict:
     # returns a simplified recipe stripping away unnecessary details
     blockMap: dict = recipe.get('BlockMap', {})
     simplified_recipe: dict = {}
-
-    for block in blockMap.values():
+    for _, block in blockMap.items():
         if "LLMBlock" in block:
             name = block.get('Name', '')
             simplified_recipe[name] = process_llm_block(name, block.get('LLMBlock', {}))
@@ -254,8 +258,9 @@ def format_condition(condition: dict):
                 if 'StringValue' in rhs_value:
                     rhs = rhs_value.get('StringValue', '')
                 else:
-                    arr = rhs.get('StringList', [])
-                    rhs = f"[{', '.join(arr)}]" 
+                    arr = rhs_value.get('StringList', {})
+                    arr_value = arr.get('Array', [])
+                    rhs = f"[{', '.join(arr_value)}]" 
             conditions_arr.append(f"{lhs} {op} {rhs}")
 
         condition_str = op_compound.join(conditions_arr)
@@ -272,31 +277,33 @@ def format_condition(condition: dict):
             if 'StringValue' in rhs_value:
                 rhs = rhs_value.get('StringValue', '')
             else:
-                arr = rhs.get('StringList', [])
-                rhs = f"[{', '.join(arr)}]" 
+                arr = rhs_value.get('StringList', {})
+                arr_value = arr.get('Array', [])
+                rhs = f"[{', '.join(arr_value)}]" 
         condition_str = f"{lhs} {op} {rhs}"
 
     return {'NextBlock': next_block_id, "Condition": condition_str}
 
 
 def process_message_block(name: str, block: dict):
+    message_block: dict = {}
     msg_block_type = get_message_block_type(block)
     message_block['Name'] = name
     message_block: dict = {'Type': msg_block_type}
 
-    leading_message_block = block.get('LeadingMessage', {})
-    if msg_block_type == "ButtonBlock":
-        message_block['content'] = process_button_block(leading_message_block)
-    elif msg_block_type == "QuestionBlock":
-        message_block['content'] = process_question_block(leading_message_block)
-    elif msg_block_type == "SliderBlock":
-        message_block['content'] = process_slider_block(leading_message_block)
-    elif msg_block_type == "ListBlock":
-        message_block['content'] = process_list_block(leading_message_block)
-    elif msg_block_type == "MediaBlock":
-        message_block['content'] = process_media_block(leading_message_block)
-    else:
-        message_block['Content'] = leading_message_block.get('Text', '')
+    # leading_message_block = block.get('LeadingMessage', {})
+    # if msg_block_type == "ButtonBlock":
+    #     message_block['content'] = process_button_block(leading_message_block)
+    # elif msg_block_type == "QuestionBlock":
+    #     message_block['content'] = process_question_block(leading_message_block)
+    # elif msg_block_type == "SliderBlock":
+    #     message_block['content'] = process_slider_block(leading_message_block)
+    # elif msg_block_type == "ListBlock":
+    #     message_block['content'] = process_list_block(leading_message_block)
+    # elif msg_block_type == "MediaBlock":
+    #     message_block['content'] = process_media_block(leading_message_block)
+    # else:
+    #     message_block['Content'] = leading_message_block.get('Text', '')
 
     return message_block
 
@@ -314,17 +321,20 @@ def get_message_block_type(block: dict):
         block_type = "ListBlock"
     elif leading_message.get('Attachments', {}):
         block_type = "MediaBlock"
-    print(block_type)
+    # print(block_type)
     return block_type
 
 
-def process_message_block(leading_message: dict):
+#TODO
+def process_message_block_todo(leading_message: dict):
     pass
 
-def process_media_block(leading_message: dict):
+#TODO
+def process_media_block_todo(leading_message: dict):
     pass
 
-def process_question_block(leading_message: dict):
+#TODO
+def process_question_block_todo(leading_message: dict):
     question_block: dict = {"Text": leading_message.get("Text", "")}
     quick_replies = []
     for qr in leading_message.get('QuickReplies', []):
@@ -333,7 +343,8 @@ def process_question_block(leading_message: dict):
     question_block['QuickReplies'] = quick_replies
     return question_block 
 
-def process_button_block(leading_message: dict):
+#TODO
+def process_button_block_todo(leading_message: dict):
     button_template = leading_message.get("Template", {}).get("ButtonTemplate", {})
     button_block: dict = {"Text": button_template.get('Title')}
     buttons = []
@@ -343,8 +354,8 @@ def process_button_block(leading_message: dict):
     button_block['Buttons'] = buttons
     return button_block 
 
-
-def process_slider_block(leading_message: dict):
+#TODO
+def process_slider_block_todo(leading_message: dict):
     slider_block: dict = {}
     cards= []
     for card in leading_message.get('cards', []):
@@ -357,8 +368,8 @@ def process_slider_block(leading_message: dict):
     slider_block['cards'] = cards
     return slider_block 
 
-
-def process_list_block(leading_message: dict):
+#TODO
+def process_list_block_todo(leading_message: dict):
     list_block: dict = {}
     cards= []
     for card in leading_message.get('cards', []):
@@ -378,10 +389,23 @@ def block_str(block_id: str, block_map: dict):
         block_types = ["LLMBlock", "WebhookBlock", "TransferBlock", "OrderDetailBlock", 
                        "APIBlock", "ConditionBlock", "FAQBlock", "CodeBlock", "MessageBlock", "CloseBlock"]
         for block_type in block_types:
+            bt = block_type
             if "MessageBlock" in block:
-                block_type = get_message_block_type(block)
+                bt= get_message_block_type(block)
             block_name = block['Name']
-            return f"{block_type}({block_name})"
+            return f"{bt}({block_name})"
     else:
         return ""
 
+if __name__ == '__main__':
+    base_url = "https://hunaidc.verloop.io"
+    recipe_id = "c0cc82e2-a29d-41e0-ae66-2caf55a2a44a"
+    recipe = getRecipe(base_url, recipe_id)
+
+    with open('unprocessed_recipe.json', 'w') as f:
+        f.write(json.dumps(recipe))
+
+    simplified_recipe = process_recipe(recipe.get("Recipe"))
+
+    with open('processed_recipe.json', 'w') as f:
+        f.write(json.dumps(simplified_recipe))

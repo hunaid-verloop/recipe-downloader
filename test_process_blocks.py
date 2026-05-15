@@ -1,4 +1,4 @@
-from recipes_downloader import *
+from recipe_processor import *
 import json
 
 #################################################Test for LLMBlock##############################################
@@ -53,6 +53,7 @@ def test_process_condition_block():
   with open('./transformed_blocks/conditionblock_transformed.json', 'w') as o:
     o.write(json.dumps(process_condition_block("Condition 1", conditionblock)))
 
+
 #################################################Test for MessageBlock Type##############################################
 def test_get_message_block_type():
   for eg in ['./example_blocks/button_block.json', './example_blocks/question_block.json',
@@ -63,25 +64,49 @@ def test_get_message_block_type():
     get_message_block_type(messageblock)
 
 
+#################################################Test for MessageBlock##############################################
 def test_process_message_block():
-    pass
+  with open('./example_blocks/message_block.json') as f:
+    msgblock = json.load(f)
+  with open('./transformed_blocks/messageblock_transformed.json', 'w') as o:
+    o.write(json.dumps(process_message_block("Message 1", msgblock)))
 
 
-def test_process_button_block():
-    pass
-
-
-def test_process_question_block():
-    pass
-
-
-def test_process_slider_block():
-    pass
-
-
-def test_process_list_block():
-    pass
-
-
+#################################################Test for MediaBlock##############################################
 def test_process_media_block():
-    pass
+  with open('./example_blocks/media_block.json') as f:
+    mediablock = json.load(f)
+  with open('./transformed_blocks/mediablock_transformed.json', 'w') as o:
+    o.write(json.dumps(process_media_block("Media 1", mediablock)))
+
+
+#################################################Test for ButtonBlock##############################################
+def test_process_button_block():
+  with open('./example_blocks/button_block.json') as f:
+    buttonblock = json.load(f)
+  with open('./transformed_blocks/buttonblock_transformed.json', 'w') as o:
+    o.write(json.dumps(process_button_block("Button 1", buttonblock)))
+
+
+#################################################Test for QuestionBlock##############################################
+def test_process_question_block():
+  with open('./example_blocks/question_block.json') as f:
+    questionblock = json.load(f)
+  with open('./transformed_blocks/questionblock_transformed.json', 'w') as o:
+    o.write(json.dumps(process_question_block("Question 1", questionblock)))
+
+
+#################################################Test for SliderBlock##############################################
+def test_process_slider_block():
+  with open('./example_blocks/slider_block.json') as f:
+    sliderblock = json.load(f)
+  with open('./transformed_blocks/sliderblock_transformed.json', 'w') as o:
+    o.write(json.dumps(process_slider_block("Slider 1", sliderblock)))
+
+
+#################################################Test for ListBlock##############################################
+def test_process_list_block():
+  with open('./example_blocks/list_block.json') as f:
+    listblock = json.load(f)
+  with open('./transformed_blocks/listblock_transformed.json', 'w') as o:
+    o.write(json.dumps(process_list_block("List 1", listblock)))
