@@ -43,10 +43,12 @@ def getRecipe(base_url: str, recipe_id: str):
     return resp
 
 def fetch_and_save_recipe(base_url: str, recipe_id: str):
+    from recipe_processor import process_recipe
     recipe = getRecipe(base_url, recipe_id)
+    simplified_recipe = process_recipe(recipe.get("Recipe"))
     file_name = os.path.join(OUTPUT_DIR, f'{recipe_id}.json')
     with open(file_name, 'w') as f:
-        json.dump(recipe, f)
+        json.dump(simplified_recipe, f)
 
 
 def build_id_name_map(base_url: str):
@@ -87,5 +89,5 @@ if __name__ == '__main__':
     else:
         print(args)
         print(args.base_url)
-        # main(base_url=args.base_url)
-        build_id_name_map(args.base_url)
+        main(base_url=args.base_url)
+        # build_id_name_map(args.base_url)

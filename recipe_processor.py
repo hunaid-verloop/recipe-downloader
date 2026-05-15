@@ -389,17 +389,19 @@ def block_str(block_id: str, block_map: dict):
         block_types = ["LLMBlock", "WebhookBlock", "TransferBlock", "OrderDetailBlock", 
                        "APIBlock", "ConditionBlock", "FAQBlock", "CodeBlock", "MessageBlock", "CloseBlock"]
         for block_type in block_types:
-            bt = block_type
-            if "MessageBlock" in block:
-                bt= get_message_block_type(block)
-            block_name = block['Name']
-            return f"{bt}({block_name})"
+            if block_type in block:
+                if block_type == "MessageBlock":
+                    bt = get_message_block_type(block)
+                else:
+                    bt = block_type
+                block_name = block['Name']
+                return f"{bt}({block_name})"
     else:
         return ""
 
 if __name__ == '__main__':
-    base_url = "https://hunaidc.verloop.io"
-    recipe_id = "c0cc82e2-a29d-41e0-ae66-2caf55a2a44a"
+    base_url = "https://aubankuat.verloop.io"
+    recipe_id = "4bbb6d9f-4002-4881-b620-69dc03b976c5"
     recipe = getRecipe(base_url, recipe_id)
 
     with open('unprocessed_recipe.json', 'w') as f:
