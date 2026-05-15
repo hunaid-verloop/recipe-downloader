@@ -1,0 +1,476 @@
+{
+    "Conditions": [
+      {
+        "ID": "90db40f9-53d7-4222-aabc-78144e05d93e",
+        "ConditionList": {
+          "ConditionWrapper": {
+            "ID": "8df8733d-e3a1-4e32-a84d-685c16188cb2",
+            "Conditions": [
+              {
+                "Condition": {
+                  "ID": "c32fd817-783e-46e0-a1e7-4e8c83ec849a",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "BalanceEnquiry"
+                    }
+                  }
+                }
+              },
+              {
+                "Condition": {
+                  "ID": "a4340fa6-3d8f-4444-b34b-cd3c99b4c668",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "Recent_Transactions"
+                    }
+                  }
+                }
+              },
+              {
+                "Condition": {
+                  "ID": "8df8733d-e3a1-4e32-a84d-685c16188cb2",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "User_Interested_In_Account_Statement"
+                    }
+                  }
+                }
+              }
+            ],
+            "Operator": "OR"
+          }
+        },
+        "NextBlockId": "d01aec6a-06af-4b8d-abf2-eb6bc15eb66e"
+      },
+      {
+        "ID": "03c3e51f-d0d5-4781-8725-98bbf1845ef5",
+        "ConditionList": {
+          "Condition": {
+            "ID": "14807b9f-1ee9-496e-9055-c2b015edc6f2",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "Fixed_Deposit_Balance_MaturityDate_InterestRate"
+              }
+            }
+          }
+        },
+        "NextBlockId": "21145a34-6a83-4eba-8bdb-9333e47e3562"
+      },
+      {
+        "ID": "e9c7bff4-1030-4866-9c59-83dc090fcbb3",
+        "ConditionList": {
+          "Condition": {
+            "ID": "1df9416c-dfd6-4bed-8cd3-609153d5fd37",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "User_Enquiring_About_Existing_Loan_Account"
+              }
+            }
+          }
+        },
+        "NextBlockId": "3e4babe5-442b-4987-8e68-0595354eb8de"
+      },
+      {
+        "ID": "50c16e4e-1aa3-483f-b6f2-9b32db0a134a",
+        "ConditionList": {
+          "Condition": {
+            "ID": "336eefb0-3f7f-4c92-90d7-bbc6953ac2e0",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "Debit_Card_Enable_Disable_Transactions"
+              }
+            }
+          }
+        },
+        "NextBlockId": "2c773aa0-d1f3-4e0d-9710-82cb499bb3fb"
+      },
+      {
+        "ID": "f8cb33f3-d3ff-4a7e-b123-25704f3fa431",
+        "ConditionList": {
+          "Condition": {
+            "ID": "44b637ba-1f8c-4842-866f-39fdf1b96cea",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "User_Asked_For_Cheque_Status_Stop_Cheque"
+              }
+            }
+          }
+        },
+        "NextBlockId": "f0a0953e-0392-44f3-a504-e668355fab4a"
+      },
+      {
+        "ID": "6d26c9c0-5d55-4d71-9364-6b76091afb8e",
+        "ConditionList": {
+          "Condition": {
+            "ID": "82b3799f-d896-4fcd-bfee-fc88ab17a621",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "CloseConversation"
+              }
+            }
+          }
+        },
+        "NextBlockId": "8eb1d1fc-f8b8-4a92-814f-34f9db70dbd2"
+      },
+      {
+        "ID": "9241ef4c-faa6-4ad4-adcc-a2da3c179e5f",
+        "ConditionList": {
+          "Condition": {
+            "ID": "32a8255d-0e15-4a79-8fa0-8e490f949bee",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "User_Wants_To_Place_An_Order_For_Cheque_Book_Request"
+              }
+            }
+          }
+        },
+        "NextBlockId": "f0a0953e-0392-44f3-a504-e668355fab4a"
+      },
+      {
+        "ID": "63a88e76-ef55-40f3-b2d9-fbb262363355",
+        "ConditionList": {
+          "ConditionWrapper": {
+            "ID": "2bef698c-a17e-48d3-9379-d7347a1bae10",
+            "Conditions": [
+              {
+                "Condition": {
+                  "ID": "c8547001-4d5a-47e8-bb9f-d012ef27fa94",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "Fraud_Or_Block_UPI"
+                    }
+                  }
+                }
+              },
+              {
+                "Condition": {
+                  "ID": "b61af549-0d00-4770-bcbf-0e32d635f30f",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "Fraud_Or_Block_MobileBanking"
+                    }
+                  }
+                }
+              },
+              {
+                "Condition": {
+                  "ID": "704613ae-bbff-47cb-8b2d-9986596e1521",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "Fraud_Or_Block_InternetBanking"
+                    }
+                  }
+                }
+              },
+              {
+                "Condition": {
+                  "ID": "2bef698c-a17e-48d3-9379-d7347a1bae10",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "Fraud_Or_Block_DebitCard"
+                    }
+                  }
+                }
+              },
+              {
+                "Condition": {
+                  "ID": "df73f05d-b494-44f2-9a7f-ec3b5a2e2e5b",
+                  "LHS": {
+                    "Variable": {
+                      "Id": "intentdetected",
+                      "Type": "TEXT",
+                      "Custom": null,
+                      "MaskEnabled": false,
+                      "unMaskLength": 0,
+                      "NumericMaskEnabled": false,
+                      "Scope": "UNKNOWN",
+                      "VariableKind": "UNKNOWNVARIABLE",
+                      "Channel": "ALL",
+                      "SystemVariableType": "SystemUnknown",
+                      "TTL": 0
+                    }
+                  },
+                  "Operator": "EQUALS",
+                  "RHS": {
+                    "Value": {
+                      "StringValue": "Fraud_Or_Unauthorised_Usage_General"
+                    }
+                  }
+                }
+              }
+            ],
+            "Operator": "OR"
+          }
+        },
+        "NextBlockId": "71dc0289-cc99-47e5-bc9b-8f5ad26842ff"
+      },
+      {
+        "ID": "1ca9c7f9-4930-4344-bc1e-7668557da538",
+        "ConditionList": {
+          "Condition": {
+            "ID": "b404b97f-1761-43f8-b627-27ce852a0cc3",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "AccountStatus"
+              }
+            }
+          }
+        },
+        "NextBlockId": "d01aec6a-06af-4b8d-abf2-eb6bc15eb66e"
+      },
+      {
+        "ID": "a54782c4-c35e-46ce-9b6e-66256fd01a14",
+        "ConditionList": {
+          "Condition": {
+            "ID": "c63788fa-275e-4638-8699-565b74f7b1b1",
+            "LHS": {
+              "Variable": {
+                "Id": "intentdetected",
+                "Type": "TEXT",
+                "Custom": null,
+                "MaskEnabled": false,
+                "unMaskLength": 0,
+                "NumericMaskEnabled": false,
+                "Scope": "UNKNOWN",
+                "VariableKind": "UNKNOWNVARIABLE",
+                "Channel": "ALL",
+                "SystemVariableType": "SystemUnknown",
+                "TTL": 0
+              }
+            },
+            "Operator": "EQUALS",
+            "RHS": {
+              "Value": {
+                "StringValue": "Unblock_Debit_Card"
+              }
+            }
+          }
+        },
+        "NextBlockId": "7b41b2d4-d8b8-4a6a-9d7a-c7e1d27f8d1c"
+      }
+    ]
+}

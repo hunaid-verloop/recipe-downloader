@@ -1,0 +1,81 @@
+{
+    "Method": "POST",
+    "URL": "https://hunaidc.verloop.io/gateway/twirp/verloop.gateway.recipe.RecipeService/GetRecipe",
+    "ApiSuccessBlockId": "2799b9f5-d45c-4902-be09-f4d8febaa4ab",
+    "AuthConfigId": "8802a319-244e-4532-96f6-465d061bbb25",
+    "Headers": {
+      "Data": {
+        "auth": {
+          "Variable": {
+            "Id": "abc",
+            "Type": "TEXT",
+            "Custom": null,
+            "MaskEnabled": false,
+            "unMaskLength": 0,
+            "NumericMaskEnabled": false,
+            "Scope": "UNKNOWN",
+            "VariableKind": "UNKNOWNVARIABLE",
+            "Channel": "ALL",
+            "SystemVariableType": "SystemUnknown",
+            "TTL": 0
+          }
+        },
+        "authentication": {
+          "StringValue": "i am not authenticated"
+        }
+      }
+    },
+    "QueryParams": [
+      {
+        "Key": "abcd",
+        "ValueKind": {
+          "Variable": {
+            "Id": "abc",
+            "Type": "TEXT",
+            "Custom": null,
+            "MaskEnabled": false,
+            "unMaskLength": 0,
+            "NumericMaskEnabled": false,
+            "Scope": "ROOM",
+            "VariableKind": "RECIPEVARIABLE",
+            "Channel": "ALL",
+            "SystemVariableType": "SystemUnknown",
+            "TTL": 0
+          }
+        }
+      },
+      {
+        "Key": "efg",
+        "ValueKind": {
+          "StringValue": "123456"
+        }
+      }
+    ],
+    "FormUrlEncoded": {
+      "Data": {
+        "abc": {
+          "Variable": {
+            "Id": "abc",
+            "Type": "TEXT",
+            "Custom": null,
+            "MaskEnabled": false,
+            "unMaskLength": 0,
+            "NumericMaskEnabled": false,
+            "Scope": "ROOM",
+            "VariableKind": "RECIPEVARIABLE",
+            "Channel": "ALL",
+            "SystemVariableType": "SystemUnknown",
+            "TTL": 0
+          }
+        },
+        "ydfy": {
+          "StringValue": "ahgfguyy"
+        }
+      }
+    },
+    "Timeout": "15",
+    "RequestEncodingType": "UNKNOWN_ENCODING_TYPE",
+    "ResponseEncodingType": "UNKNOWN_ENCODING_TYPE",
+    "RetriesOnFailure": "0",
+    "UseBaseURL": false
+}

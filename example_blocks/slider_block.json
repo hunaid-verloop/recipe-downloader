@@ -1,0 +1,148 @@
+{
+  "LeadingMessage": {
+    "Id": "",
+    "Room": "",
+    "Sequence": "0",
+    "Source": "",
+    "Template": {
+      "CardTemplate": {
+        "Cards": [
+          {
+            "Title": "card 1",
+            "Subtitle": "This is option 1",
+            "ImageURL": "https://cdn.verloop.io/hunaidc/cbd30783-a748-4b95-8dd8-6358027f9eea/7Mmat6o979956ygT8/image-png",
+            "DefaultAction": null,
+            "Buttons": [
+              {
+                "Title": "option1",
+                "Postback": {
+                  "Payload": "{\"value\":\"c92cf564-419e-42f4-8ab3-abcce87b1831\",\"type\":\"user\"}",
+                  "Data": ""
+                },
+                "TriggerKeywords": [],
+                "Id": "c92cf564-419e-42f4-8ab3-abcce87b1831",
+                "ImageURL": ""
+              },
+              {
+                "Title": "option2",
+                "Postback": {
+                  "Payload": "{\"value\":\"63aa5d06-ae2f-491f-880e-96047d236359\",\"type\":\"user\"}",
+                  "Data": ""
+                },
+                "TriggerKeywords": [],
+                "Id": "63aa5d06-ae2f-491f-880e-96047d236359",
+                "ImageURL": ""
+              }
+            ],
+            "Id": "fbaf7d68-8ca9-4011-8a36-1c7b93cc265d"
+          },
+          {
+            "Title": "card 2",
+            "Subtitle": "This is option 2",
+            "ImageURL": "https://cdn.verloop.io/hunaidc/cbd30783-a748-4b95-8dd8-6358027f9eea/yDFYvZkAdaF5xD6Nr/image-png",
+            "DefaultAction": null,
+            "Buttons": [
+              {
+                "Title": "option2",
+                "Postback": {
+                  "Payload": "{\"value\":\"7845252a-8764-41d6-bf36-96706067771b\",\"type\":\"user\"}",
+                  "Data": ""
+                },
+                "TriggerKeywords": [],
+                "Id": "7845252a-8764-41d6-bf36-96706067771b",
+                "ImageURL": ""
+              }
+            ],
+            "Id": "bcda0bfa-6fce-418a-b260-6fcb442a6ec1"
+          }
+        ]
+      }
+    },
+    "QuickReplies": [],
+    "Typing": false,
+    "Device": "UNKNOWN",
+    "CustomInputType": null,
+    "DisableInputBox": false,
+    "TextMessage": "",
+    "TransferButton": null,
+    "User": null,
+    "Meta": null,
+    "SentAt": "0",
+    "QuickReplyAction": null,
+    "OriginalMessage": null,
+    "Status": "UNKNOWN",
+    "FAQRequest": null,
+    "BlockInfo": null,
+    "TrackURLs": {},
+    "QuickReplied": false,
+    "MaskedTextMessage": "",
+    "UnmaskedTextMessage": "",
+    "NextMsgMaskStatus": null,
+    "AllowInterruptions": false,
+    "CampaignInfo": null,
+    "IsError": false,
+    "ErrorInfo": null
+  },
+  "ReaskMessage": null,
+  "InvalidMessage": {
+    "Id": "",
+    "Room": "",
+    "Sequence": "0",
+    "Source": "",
+    "Text": "Value you provided is incorrect or invalid. Please provide correct information",
+    "QuickReplies": [],
+    "Typing": false,
+    "Device": "UNKNOWN",
+    "CustomInputType": null,
+    "DisableInputBox": false,
+    "TextMessage": "Value you provided is incorrect or invalid. Please provide correct information",
+    "TransferButton": null,
+    "User": null,
+    "Meta": null,
+    "SentAt": "0",
+    "QuickReplyAction": null,
+    "OriginalMessage": null,
+    "Status": "UNKNOWN",
+    "FAQRequest": null,
+    "BlockInfo": null,
+    "TrackURLs": {},
+    "QuickReplied": false,
+    "MaskedTextMessage": "",
+    "UnmaskedTextMessage": "",
+    "NextMsgMaskStatus": null,
+    "AllowInterruptions": false,
+    "CampaignInfo": null,
+    "IsError": false,
+    "ErrorInfo": null
+  },
+  "RefuseMessage": null,
+  "Mandatory": false,
+  "Type": "Card",
+  "DefaultVariableId": "",
+  "ActionMap": {},
+  "ActionIDs": [
+    "c92cf564-419e-42f4-8ab3-abcce87b1831",
+    "63aa5d06-ae2f-491f-880e-96047d236359",
+    "7845252a-8764-41d6-bf36-96706067771b"
+  ],
+  "SourceResponseVariableId": "",
+  "TriggerFAQ": "FALSE",
+  "FAQCategories": {},
+  "FAQCategoryList": [],
+  "DoNotShareButtonText": "",
+  "ShowDoNotShareButton": false,
+  "LeadingMessageMap": {},
+  "ReaskMessageMap": {},
+  "InvalidMessageMap": {},
+  "RefuseMessageMap": {},
+  "DoNotShareButtonTextMap": {},
+  "BargeInEnabled": false,
+  "NudgeEnabled": false,
+  "NudgeMessageDelayTime": 0,
+  "NudgeMessageRepeatNumber": 0,
+  "NudgeMessage": null,
+  "NudgeMessageMap": {},
+  "DefaultFAQ": false,
+  "ListSectionsPosition": {},
+  "NudgeDisabled": false
+}

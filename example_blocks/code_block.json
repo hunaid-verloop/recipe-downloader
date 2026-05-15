@@ -1,0 +1,42 @@
+{
+    "Language": "JAVASCRIPT",
+    "SelectedPlugins": [
+      {
+        "MasterID": "be713ca8-df1d-4a31-ac40-6d0c255db68a",
+        "Version": "1",
+        "Type": "SYSTEM_PLUGIN"
+      }
+    ],
+    "Code": "console.log(variables.abc)\nif (variables.abc === \"Happy\"){\n    variables.abc = \"Not Happy\"\n}else if(variables.abc === \"Not Happy\"){\n    variables.abc = \"Angry\"\n}else{\n    variables.abc = \"Happy\"\n}\nconsole.log(variables.abc)",
+    "CodeSuccessBlockId": "3e3cb259-2b2c-45ad-ad9f-eede99c76e89",
+    "Variables": {
+      "abc": {
+        "Id": "abc",
+        "Type": "TEXT",
+        "Custom": null,
+        "MaskEnabled": false,
+        "unMaskLength": 0,
+        "NumericMaskEnabled": false,
+        "Scope": "ROOM",
+        "VariableKind": "RECIPEVARIABLE",
+        "Channel": "ALL",
+        "SystemVariableType": "SystemUnknown",
+        "TTL": 0
+      }
+    },
+    "ResultVariableDefinition": {
+      "Id": "",
+      "Type": "TEXT",
+      "Custom": {
+        "Type": "LIST"
+      },
+      "MaskEnabled": false,
+      "unMaskLength": 0,
+      "NumericMaskEnabled": false,
+      "Scope": "UNKNOWN",
+      "VariableKind": "UNKNOWNVARIABLE",
+      "Channel": "ALL",
+      "SystemVariableType": "SystemUnknown",
+      "TTL": 0
+    }
+}

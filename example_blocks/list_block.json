@@ -1,0 +1,184 @@
+{
+    "LeadingMessage": {
+      "Id": "",
+      "Room": "",
+      "Sequence": "0",
+      "Source": "",
+      "Template": {
+        "ListTemplate": {
+          "Button": {
+            "Title": "list of items",
+            "Content": "categories are cats and dogs",
+            "ButtonText": "chose your pet name"
+          },
+          "Header": "pet names",
+          "Sections": [
+            {
+              "Id": "bf3ff366-54a6-455c-aae3-fcaf2ec8937b",
+              "Title": "cats",
+              "Items": [
+                {
+                  "Id": "97da7562-47fe-4fe5-9d45-c84aff2484be",
+                  "Title": "tom",
+                  "Subtitle": "",
+                  "Postback": {
+                    "Payload": "{\"value\":\"97da7562-47fe-4fe5-9d45-c84aff2484be\",\"type\":\"user\"}",
+                    "Data": ""
+                  }
+                },
+                {
+                  "Id": "8739dbae-2c03-49c7-aecf-8ee9d7095448",
+                  "Title": "henry",
+                  "Subtitle": "",
+                  "Postback": {
+                    "Payload": "{\"value\":\"8739dbae-2c03-49c7-aecf-8ee9d7095448\",\"type\":\"user\"}",
+                    "Data": ""
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "d0ae9844-9dcf-48b6-92a1-e64576fc76b3",
+              "Title": "dogs",
+              "Items": [
+                {
+                  "Id": "72288e80-8021-42b1-a31a-84af48d573f8",
+                  "Title": "bianca",
+                  "Subtitle": "",
+                  "Postback": {
+                    "Payload": "{\"value\":\"72288e80-8021-42b1-a31a-84af48d573f8\",\"type\":\"user\"}",
+                    "Data": ""
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "QuickReplies": [],
+      "Typing": false,
+      "Device": "UNKNOWN",
+      "CustomInputType": null,
+      "DisableInputBox": false,
+      "TextMessage": "",
+      "TransferButton": null,
+      "User": null,
+      "Meta": null,
+      "SentAt": "0",
+      "QuickReplyAction": null,
+      "OriginalMessage": null,
+      "Status": "UNKNOWN",
+      "FAQRequest": null,
+      "BlockInfo": null,
+      "TrackURLs": {},
+      "QuickReplied": false,
+      "MaskedTextMessage": "",
+      "UnmaskedTextMessage": "",
+      "NextMsgMaskStatus": null,
+      "AllowInterruptions": false,
+      "CampaignInfo": null,
+      "IsError": false,
+      "ErrorInfo": null
+    },
+    "ReaskMessage": null,
+    "InvalidMessage": {
+      "Id": "",
+      "Room": "",
+      "Sequence": "0",
+      "Source": "",
+      "Text": "Value you provided is incorrect or invalid. Please provide correct information",
+      "QuickReplies": [],
+      "Typing": false,
+      "Device": "UNKNOWN",
+      "CustomInputType": null,
+      "DisableInputBox": false,
+      "TextMessage": "Value you provided is incorrect or invalid. Please provide correct information",
+      "TransferButton": null,
+      "User": null,
+      "Meta": null,
+      "SentAt": "0",
+      "QuickReplyAction": null,
+      "OriginalMessage": null,
+      "Status": "UNKNOWN",
+      "FAQRequest": null,
+      "BlockInfo": null,
+      "TrackURLs": {},
+      "QuickReplied": false,
+      "MaskedTextMessage": "",
+      "UnmaskedTextMessage": "",
+      "NextMsgMaskStatus": null,
+      "AllowInterruptions": false,
+      "CampaignInfo": null,
+      "IsError": false,
+      "ErrorInfo": null
+    },
+    "RefuseMessage": {
+      "Id": "",
+      "Room": "",
+      "Sequence": "0",
+      "Source": "",
+      "Text": "Understand your concern for privacy. Let's move forward",
+      "QuickReplies": [],
+      "Typing": false,
+      "Device": "UNKNOWN",
+      "CustomInputType": null,
+      "DisableInputBox": false,
+      "TextMessage": "Understand your concern for privacy. Let's move forward",
+      "TransferButton": null,
+      "User": null,
+      "Meta": null,
+      "SentAt": "0",
+      "QuickReplyAction": null,
+      "OriginalMessage": null,
+      "Status": "UNKNOWN",
+      "FAQRequest": null,
+      "BlockInfo": null,
+      "TrackURLs": {},
+      "QuickReplied": false,
+      "MaskedTextMessage": "",
+      "UnmaskedTextMessage": "",
+      "NextMsgMaskStatus": null,
+      "AllowInterruptions": false,
+      "CampaignInfo": null,
+      "IsError": false,
+      "ErrorInfo": null
+    },
+    "Mandatory": false,
+    "Type": "List",
+    "DefaultVariableId": "",
+    "ActionMap": {},
+    "ActionIDs": [
+      "97da7562-47fe-4fe5-9d45-c84aff2484be",
+      "8739dbae-2c03-49c7-aecf-8ee9d7095448",
+      "72288e80-8021-42b1-a31a-84af48d573f8"
+    ],
+    "SourceResponseVariableId": "",
+    "TriggerFAQ": "FALSE",
+    "FAQCategories": {},
+    "FAQCategoryList": [],
+    "DoNotShareButtonText": "",
+    "ShowDoNotShareButton": false,
+    "LeadingMessageMap": {},
+    "ReaskMessageMap": {},
+    "InvalidMessageMap": {},
+    "RefuseMessageMap": {},
+    "DoNotShareButtonTextMap": {},
+    "BargeInEnabled": false,
+    "NudgeEnabled": false,
+    "NudgeMessageDelayTime": 0,
+    "NudgeMessageRepeatNumber": 0,
+    "NudgeMessage": null,
+    "NudgeMessageMap": {},
+    "DefaultFAQ": true,
+    "ListSectionsPosition": {
+      "bf3ff366-54a6-455c-aae3-fcaf2ec8937b": {
+        "X": -246,
+        "Y": 342
+      },
+      "d0ae9844-9dcf-48b6-92a1-e64576fc76b3": {
+        "X": 99.85233297675848,
+        "Y": 368.66806332077
+      }
+    },
+    "NudgeDisabled": false
+}
