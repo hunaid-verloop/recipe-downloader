@@ -45,14 +45,14 @@ def process_recipe(recipe: dict)-> dict:
             continue
         if "ConditionBlock" in block:
             name = block.get('Name', '')
-            simplified_recipe[name] = process_condition_block(name, block.get('ConditionBlock', {}))
+            simplified_recipe[name] = process_condition_block(name, block.get('ConditionBlock', {}), blockMap)
             next_block_id = block.get('NextBlockId', '')
             next_block = block_str(next_block_id, blockMap)
             simplified_recipe[name]['NextBlock'] = next_block
             continue
         if "CodeBlock" in block:
             name = block.get('Name', '')
-            simplified_recipe[name] = process_code_block(name, block.get('CodeBlock', {}))
+            simplified_recipe[name] = process_code_block(name, block.get('CodeBlock', {}), blockMap)
             next_block_id = block.get('NextBlockId', '')
             next_block = block_str(next_block_id, blockMap)
             simplified_recipe[name]['NextBlock'] = next_block
@@ -200,7 +200,7 @@ def process_api_block(name: str, block: dict):
     
     return api_block
 
-def process_code_block(name: str, block: dict):
+def process_code_block(name: str, block: dict, blockMap: dict):
     code_block: dict = {'Type': "CodeBlock"}
     code_block['Name'] = name
     code_block['Code'] = block.get('Code', '')
@@ -219,26 +219,26 @@ def process_code_block(name: str, block: dict):
             code_block['variables'].append(f'{k} Type: {v.get("Type", "")} Scope: {v.get("Scope", "")} kind: {v.get("VariableKind", "")}')
 
 
-    # if CodeSuccessBlockId != "":
-    #     code_block['CodeSuccessBlock'] = block_str(CodeSuccessBlockId)
+    if CodeSuccessBlockId != "":
+        code_block['CodeSuccessBlock'] = block_str(CodeSuccessBlockId, blockMap)
     
     return code_block
 
 
-def process_condition_block(name: str, block: dict):
+def process_condition_block(name: str, block: dict, blockMap: dict):
     condition_block: dict = {'Type': "ConditionBlock"}
     condition_block['Name'] = name
     conditions = []
     for condition in block.get('Conditions', []):
-        formatted_condition = format_condition(condition)
+        formatted_condition = format_condition(condition, blockMap)
         conditions.append(formatted_condition)
     condition_block['Conditions'] = conditions    
 
     return condition_block
 
-def format_condition(condition: dict):
+def format_condition(condition: dict, blockMap: dict):
     next_block_id = condition.get('NextBlockId','')
-    # next_block = block_str(next_block_id)
+    next_block = block_str(next_block_id, blockMap)
     condition_list = condition.get('ConditionList', {})
     condition_str = ""
     if 'ConditionWrapper' in condition_list:
@@ -285,7 +285,7 @@ def format_condition(condition: dict):
                 rhs = f"[{', '.join(arr_value)}]" 
         condition_str = f"{lhs} {op} {rhs}"
 
-    return {'NextBlock': next_block_id, "Condition": condition_str}
+    return {'NextBlock': next_block, "Condition": condition_str}
 
 
 def process_message_block(name: str, block: dict):
