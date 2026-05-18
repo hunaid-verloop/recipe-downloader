@@ -1,7 +1,9 @@
 import os
+import shutil
 import argparse
 import json
 import csv
+import re
 from concurrent.futures import ThreadPoolExecutor
 
 import requests
@@ -45,8 +47,10 @@ def getRecipe(base_url: str, recipe_id: str):
 def fetch_and_save_recipe(base_url: str, recipe_id: str):
     from recipe_processor import process_recipe
     recipe = getRecipe(base_url, recipe_id)
-    simplified_recipe = process_recipe(recipe.get("Recipe"))
-    file_name = os.path.join(OUTPUT_DIR, f'{recipe_id}.json')
+    simplified_recipe = process_recipe(recipe.get("Recipe", {}))
+    recipe_name = recipe.get("Recipe", {}).get('Name')
+    recipe_name = sanitize_filename(recipe_name)
+    file_name = os.path.join(OUTPUT_DIR, f'{recipe_name}.json')
     with open(file_name, 'w') as f:
         json.dump(simplified_recipe, f)
 
@@ -70,9 +74,15 @@ def build_id_name_map(base_url: str):
         writer.writerows(id_name)
     
 
+def sanitize_filename(filename):
+    sanitized_name = re.sub(r'[\\/*?:"<>|]', "_", filename)
+    return sanitized_name
+
+
 def main(base_url: str, max_workers=3):
     recipe_list = listRecipes(base_url)
     recipe_id_list = [item['Meta']['Id'] for item in recipe_list]
+    shutil.rmtree(OUTPUT_DIR, ignore_errors=True)
     os.mkdir(OUTPUT_DIR)
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = [executor.submit(fetch_and_save_recipe, base_url, recipe_id) for recipe_id in recipe_id_list]
