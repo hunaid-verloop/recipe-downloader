@@ -59,7 +59,7 @@ def process_recipe(recipe: dict)-> dict:
             continue
         if "MessageBlock" in block:
             name = block.get('Name', '')
-            simplified_recipe[name] = process_message_block(name, block.get("MessageBlock", {}))
+            simplified_recipe[name] = process_message_block(name, block.get("MessageBlock", {}), block.get("ActionList", []), blockMap)
             next_block_id = block.get('NextBlockId', '')
             next_block = block_str(next_block_id, blockMap)
             simplified_recipe[name]['NextBlock'] = next_block
@@ -288,25 +288,25 @@ def format_condition(condition: dict, blockMap: dict):
     return {'NextBlock': next_block, "Condition": condition_str}
 
 
-def process_message_block(name: str, block: dict):
+def process_message_block(name: str, msg_block: dict, action_list: list, blockMap: dict):
     message_block: dict = {}
-    msg_block_type = get_message_block_type(block)
+    msg_block_type = get_message_block_type(msg_block)
     message_block['Name'] = name
     message_block: dict = {'Type': msg_block_type}
 
-    # leading_message_block = block.get('LeadingMessage', {})
-    # if msg_block_type == "ButtonBlock":
-    #     message_block['content'] = process_button_block(leading_message_block)
-    # elif msg_block_type == "QuestionBlock":
-    #     message_block['content'] = process_question_block(leading_message_block)
-    # elif msg_block_type == "SliderBlock":
-    #     message_block['content'] = process_slider_block(leading_message_block)
-    # elif msg_block_type == "ListBlock":
-    #     message_block['content'] = process_list_block(leading_message_block)
-    # elif msg_block_type == "MediaBlock":
-    #     message_block['content'] = process_media_block(leading_message_block)
-    # else:
-    #     message_block['Content'] = leading_message_block.get('Text', '')
+    leading_message_block = msg_block.get('LeadingMessage', {})
+    if msg_block_type == "ButtonBlock":
+        message_block['content'] = process_button_block(leading_message_block, action_list, blockMap)
+    elif msg_block_type == "QuestionBlock":
+        message_block['content'] = process_question_block(leading_message_block, action_list, blockMap)
+    elif msg_block_type == "SliderBlock":
+        message_block['content'] = process_slider_block(leading_message_block)
+    elif msg_block_type == "ListBlock":
+        message_block['content'] = process_list_block(leading_message_block)
+    elif msg_block_type == "MediaBlock":
+        message_block['content'] = process_media_block(leading_message_block)
+    else:
+        message_block['Content'] = leading_message_block.get('Text', '')
 
     return message_block
 
@@ -328,37 +328,59 @@ def get_message_block_type(block: dict):
     return block_type
 
 
-#TODO
-def process_message_block_todo(leading_message: dict):
-    pass
+def process_media_block(leading_message: dict):
+    attachments = leading_message.get('Attachments', {}).get("Attachment", [])
+    file_url = attachments[0].get("", "")
+    media_block: dict = {
+        "FileURL": file_url
+    }
+    return media_block 
 
-#TODO
-def process_media_block_todo(leading_message: dict):
-    pass
 
-#TODO
-def process_question_block_todo(leading_message: dict):
+def process_question_block(leading_message: dict, action_list: list, blockMap: dict):
     question_block: dict = {"Text": leading_message.get("Text", "")}
     quick_replies = []
     for qr in leading_message.get('QuickReplies', []):
         qr_text = qr.get("TextQuickReply", {}).get('Title')
-        quick_replies.append(qr_text)
+        qr_id_json_str = qr.get("Payload", "")
+        next_block, rv = "", []
+        if qr_id_json_str:
+            qr_id = json.loads(qr_id_json_str).get("value", "")
+            next_block, rv = get_nextblock_for(qr_id, action_list, blockMap)
+        quick_replies.append({
+            qr_text: {
+                "NextBlock": next_block,
+                "variables": rv
+            }
+        })
     question_block['QuickReplies'] = quick_replies
     return question_block 
 
-#TODO
-def process_button_block_todo(leading_message: dict):
+
+def process_button_block(leading_message: dict, action_list: list, blockMap: dict):
     button_template = leading_message.get("Template", {}).get("ButtonTemplate", {})
     button_block: dict = {"Text": button_template.get('Title')}
     buttons = []
     for button in button_template.get('Buttons', []):
         b_text = button.get("Title", '')
-        buttons.append(b_text)
+        postback_payload_json_str = button.get("Postback", {}).get("Payload", "")
+        next_block, rv = "", []
+        if postback_payload_json_str:
+            b_id = json.loads(postback_payload_json_str).get("value", "")
+            next_block, rv = get_nextblock_for(b_id, action_list, blockMap)
+        buttons.append({
+            b_text: {
+                "NextBlock": next_block,
+                "variables": rv               
+            }
+        })
     button_block['Buttons'] = buttons
     return button_block 
 
+
 #TODO
-def process_slider_block_todo(leading_message: dict):
+def process_slider_block(leading_message: dict):
+    pass
     slider_block: dict = {}
     cards= []
     for card in leading_message.get('cards', []):
@@ -372,7 +394,8 @@ def process_slider_block_todo(leading_message: dict):
     return slider_block 
 
 #TODO
-def process_list_block_todo(leading_message: dict):
+def process_list_block(leading_message: dict):
+    pass
     list_block: dict = {}
     cards= []
     for card in leading_message.get('cards', []):
@@ -385,6 +408,15 @@ def process_list_block_todo(leading_message: dict):
     list_block['cards'] = cards
     return list_block 
 
+
+def get_nextblock_for(action_id: str, action_list: list, block_map: dict):
+    for actn in action_list:
+        if action_id == actn.get("ActionID", ""):
+            actn_ = actn.get("Action", {})
+            next_block = block_str(actn_.get("NextBlockId", ""), block_map)
+            rv = list(actn_.get("VariableValueMap", {}).keys())
+            return next_block, rv
+    return "", []
 
 def block_str(block_id: str, block_map: dict):
     if block_id in block_map:
@@ -403,8 +435,8 @@ def block_str(block_id: str, block_map: dict):
         return ""
 
 if __name__ == '__main__':
-    base_url = "https://aubankuat.verloop.io"
-    recipe_id = "4bbb6d9f-4002-4881-b620-69dc03b976c5"
+    base_url = "https://hunaidc.verloop.io"
+    recipe_id = "30f00e7b-ec55-4365-a0e6-407b6dfd0db5"
     recipe = getRecipe(base_url, recipe_id)
 
     with open('unprocessed_recipe.json', 'w') as f:
