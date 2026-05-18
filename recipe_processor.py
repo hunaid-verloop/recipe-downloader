@@ -300,9 +300,9 @@ def process_message_block(name: str, msg_block: dict, action_list: list, blockMa
     elif msg_block_type == "QuestionBlock":
         message_block['content'] = process_question_block(leading_message_block, action_list, blockMap)
     elif msg_block_type == "SliderBlock":
-        message_block['content'] = process_slider_block(leading_message_block)
+        message_block['content'] = process_slider_block(leading_message_block, action_list, blockMap)
     elif msg_block_type == "ListBlock":
-        message_block['content'] = process_list_block(leading_message_block)
+        message_block['content'] = process_list_block(leading_message_block, action_list, blockMap)
     elif msg_block_type == "MediaBlock":
         message_block['content'] = process_media_block(leading_message_block)
     else:
@@ -379,33 +379,55 @@ def process_button_block(leading_message: dict, action_list: list, blockMap: dic
 
 
 #TODO
-def process_slider_block(leading_message: dict):
-    pass
+def process_slider_block(leading_message: dict, action_list: list, blockMap: dict):
+    card_template = leading_message.get("Template", {}).get("CardTemplate", {})
     slider_block: dict = {}
     cards= []
-    for card in leading_message.get('cards', []):
+    for card in card_template.get('Cards', []):
         title = card.get('Title', '')
         sub_title = card.get('Subtitle', '')
         buttons = []
         for btn in card.get('Buttons', []):
-            buttons.append(btn.get('Title', ''))
-        cards.append({'title': title, 'sub_title': sub_title, 'buttons': buttons})
-    slider_block['cards'] = cards
+            btn_title = btn.get('Title', '')
+            btn_id = btn.get("Id", "")
+            btn_imageurl = btn.get("ImageURL", "")
+            next_block, variables = get_nextblock_for(btn_id, action_list, blockMap)
+            buttons.append({
+                btn_title: {
+                    "NextBlock": next_block,
+                    "variables": variables,
+                    "ImageURL": btn_imageurl
+                }
+            })
+        cards.append({'Title': title, 'Subtitle': sub_title, 'Buttons': buttons})
+    slider_block['Cards'] = cards
     return slider_block 
 
-#TODO
-def process_list_block(leading_message: dict):
-    pass
-    list_block: dict = {}
-    cards= []
-    for card in leading_message.get('cards', []):
-        title = card.get('Title', '')
-        sub_title = card.get('Subtitle', '')
-        buttons = []
-        for btn in card.get('Buttons', []):
-            buttons.append(btn.get('Title', ''))
-        cards.append({'title': title, 'sub_title': sub_title, 'buttons': buttons})
-    list_block['cards'] = cards
+
+def process_list_block(leading_message: dict, action_list: list, blockMap: dict):
+    list_template = leading_message.get("Template", {}).get("ListTemplate", {})
+    button = list_template.get("Button", {})
+    header = list_template.get("Header", "")
+    list_block: dict = {"Button": button, "Header": header}
+    sections= []
+    for section in list_template.get('Sections', []):
+        section_title = section.get('Title', '')
+        items = []
+        for item in section.get('Items', []):
+            item_title = item.get("Title", "")
+            item_subtitle = item.get("Subtitle", "")
+            item_id = item.get("Id", "")
+            next_block, variables = get_nextblock_for(item_id, action_list, blockMap)
+            items.append({
+                item_title: {
+                    "Title": item_title,
+                    "Subtitle": item_subtitle,
+                    "NextBlock": next_block,
+                    "variables": variables
+                }
+            })
+        sections.append({'Title': section_title, 'Items': items})
+    list_block['Sections'] = sections
     return list_block 
 
 
@@ -417,6 +439,7 @@ def get_nextblock_for(action_id: str, action_list: list, block_map: dict):
             rv = list(actn_.get("VariableValueMap", {}).keys())
             return next_block, rv
     return "", []
+
 
 def block_str(block_id: str, block_map: dict):
     if block_id in block_map:
@@ -434,9 +457,10 @@ def block_str(block_id: str, block_map: dict):
     else:
         return ""
 
+
 if __name__ == '__main__':
     base_url = "https://hunaidc.verloop.io"
-    recipe_id = "30f00e7b-ec55-4365-a0e6-407b6dfd0db5"
+    recipe_id = "c0cc82e2-a29d-41e0-ae66-2caf55a2a44a"
     recipe = getRecipe(base_url, recipe_id)
 
     with open('unprocessed_recipe.json', 'w') as f:
