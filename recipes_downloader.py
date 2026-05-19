@@ -88,6 +88,8 @@ def main(base_url: str, max_workers=3):
         futures = [executor.submit(fetch_and_save_recipe, base_url, recipe_id) for recipe_id in recipe_id_list]
         for f in futures:
             f.result()
+    shutil.make_archive(OUTPUT_DIR, "zip", OUTPUT_DIR)
+    shutil.rmtree(OUTPUT_DIR, ignore_errors=True)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="A basic greeting script.")
